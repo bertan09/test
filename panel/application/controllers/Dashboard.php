@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Dashboard extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -20,6 +20,12 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('dashboard');
-	}
+	    $data =[
+	        'title' => 'Ana Sayfa'
+	        ];
+        $this->load->view('static/header', $data);
+		$this->load->view('dashboard', $data);
+        $this->load->view('static/footer', $data);
+
+    }
 }

@@ -1,4 +1,15 @@
 </div>
+</div>
+</div>
+<!-- /.col-md-6 -->
+</div>
+<!-- /.row -->
+</div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+</div>
 <!-- ./wrapper -->
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
