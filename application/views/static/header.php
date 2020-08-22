@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>AdminLTE 3 | Starter</title>
+    <title>BTT Soft</title>
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="<?php echo base_url("assets"); ?>/plugins/fontawesome-free/css/all.min.css">
@@ -37,7 +37,7 @@
         <a href="index3.html" class="brand-link">
             <img src="<?php echo base_url("assets"); ?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Firma Adı</span>
         </a>
 
         <!-- Sidebar -->
@@ -48,46 +48,83 @@
                     <img src="<?php echo base_url("assets"); ?>/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Kullanıcı Adı</a>
                 </div>
             </div>
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#" class="nav-link active">
+                    <li class="nav-item">
+                        <a href="<?= base_url("dashboard")?>" class="nav-link <?= $this->uri->segment(1) == "dashboard" ? "active" : null?>">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Starter Pages
+                                Ana Sayfa
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url("add-device")?>" class="nav-link <?= $this->uri->segment(1) == "add-device" ? "active" : null?>">
+                            <i class="nav-icon fas fa-save"></i>
+                            <p>
+                                Cihaz Kayıt
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url("devices")?>" class="nav-link <?= $this->uri->segment(1) == "devices" ? "active" : null?>">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Cihaz Sorgula
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url("customers")?>" class="nav-link <?= $this->uri->segment(1) == "customers" ? "active" : null?>">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Müşteriler
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url("parts")?>" class="nav-link <?= $this->uri->segment(1) == "parts" ? "active" : null?>">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>
+                                Yedek Parça
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="<?= base_url("finance")?>" class="nav-link <?= $this->uri->segment(1) == "finance" ? "active" : null?>">
+                            <i class="nav-icon fas fa-university"></i>
+                            <p>
+                                Muhasebe
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview <?= $this->uri->segment(1) == "settings" ? "menu-open" : null?>">
+                        <a href="#" class="nav-link <?= $this->uri->segment(1) == "settings" ? "active" : null?>">
+                            <i class="nav-icon fas fa-cogs"></i>
+                            <p>
+                                Ayarlar
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link active">
+                                <a href="<?= base_url("settings")?>" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Active Page</p>
+                                    <p>Genel Ayarlar</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Inactive Page</p>
+                                    <p>SMS Ayarları</p>
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Simple Link
-                                <span class="right badge badge-danger">New</span>
-                            </p>
-                        </a>
                     </li>
                 </ul>
             </nav>
