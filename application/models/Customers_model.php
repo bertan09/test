@@ -9,7 +9,7 @@ class Customers_model extends CI_Model{
 
   public function get_all($data){
 
-        $builder = $this->db->get($this->tableName)->result();
+        $sql = $this->db->get($this->tableName);
 
       $where =[];
       $order = ['musteri_id', 'DESC'];
@@ -29,10 +29,10 @@ class Customers_model extends CI_Model{
       }
       if (count($where) >0){
 
-          $builder->where(implode(' || ', $where));
+          $sql->where(implode(' || ', $where));
 
       }
-      $this->db->order_by($order[0], $order[1]);
+     $sql .= $this->db->order_by($order[0], $order[1]);
       $this->db->limit($data['length'],$data['start']);
       $total= $this->db->count_all_results($this->tableName);
 
@@ -52,29 +52,29 @@ class Customers_model extends CI_Model{
 
       $response = [];
       $response['data'] = [];
-      $response['recordsTotal'] = $total;
-      $response['recordsFiltered'] = $filteredTotal;
+      $response['recordsTotal'] = 100;
+      $response['recordsFiltered'] = 100;
 
 
       $results = $this->db->get("musteriler");
       foreach ($results->result() as $user)
       {
-          $response['data'][] = [
-              'musteri_id' => $user['musteri_id'],
-              'musteri_adi' => $user['musteri_adi'],
-              'musteri_cep_tel' => $user['musteri_cep_tel'],
+          $response['data'][]= [
+              'musteri_id' => $user->musteri_id,
+              'musteri_adi' => $user->musteri_adi,
+              'musteri_cep_tel' => $user->musteri_cep_tel,
               'actions' => [
                   [
                       'title'=> 'Düzenle',
-                      'url' => 'edit.php?id=' . $user['musteri_id'],
+                      'url' => 'edit.php?id=' . $user->musteri_id,
                       'class' => 'btn btn-primary btn-sm update',
-                      'id' => $user['musteri_id']
+                      'id' => $user->musteri_id
                   ],
                   [
                       'title'=> 'Sil',
-                      'url' => 'delete.php?id=' . $user['musteri_id'],
+                      'url' => 'delete.php?id=' . $user->musteri_id,
                       'class' => 'btn btn-danger btn-sm',
-                      'id' => $user['musteri_id']
+                      'id' => $user->musteri_id
                   ]
 
               ]

@@ -25,19 +25,21 @@ class Customers extends CI_Controller {
 
     public function getAll()
     {
-        $data = array(
-            'order' => $this->input->post('order'),
-            'columns' => $this->input->post('columns'),
-            'search' => $this->input->post('search'),
-            'start' => $this->input->post('start'),
-            'length' => $this->input->post('length'),
-        );
+        {
+            $data = array(
+                'order'     =>    $this->input->post("order"),
+                'columns'   =>    $this->input->post('columns'),
+                'search'    =>    $this->input->post('search'),
+                'start'     =>    $this->input->post('start'),
+                'length'    =>    $this->input->post('length'),
+            );
 
+            $response = $this->customers_model->get_all($data);
 
-        $response = $this->customers_model->get_all($data);
+            echo json_encode($response, true);
 
-        echo json_encode($response, true);
-
+        }
     }
+
 
 }
