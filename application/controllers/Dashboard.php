@@ -11,18 +11,13 @@ class Dashboard extends CI_Controller {
     }
 	public function index()
 	{
-	    $data = $this->dashboard_model->get_all();
 
-       print_r($data) ;
-
-	  /*  $data =[
+	   $data =[
 	        'title' => 'Ana Sayfa'
 	        ];
         $this->load->view('static/header', $data);
 		$this->load->view('dashboard', $data);
         $this->load->view('static/footer', $data);
-
-*/
 
     }
 }
