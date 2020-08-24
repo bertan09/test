@@ -9,8 +9,6 @@ class Customers_model extends CI_Model{
 
   public function get_all($data){
 
-        $sql = $this->db->get($this->tableName);
-
       $where =[];
       $order = ['musteri_id', 'DESC'];
       $column = $data['order'][0]['column'];
@@ -29,19 +27,27 @@ class Customers_model extends CI_Model{
       }
       if (count($where) >0){
 
-          $sql->where(implode(' || ', $where));
+          $this->db->where(implode(' || ', $where));
 
       }
-     $sql .= $this->db->order_by($order[0], $order[1]);
+
+
+      $this->db->order_by('musteri_id', 'DESC');
       $this->db->limit($data['length'],$data['start']);
-      $total= $this->db->count_all_results($this->tableName);
+      $query = $this->db->get('musteriler');
+
+    $total = $this->db->count_all('musteriler');
+
+
 
 
       if (count($where) >0){
 
-          $getFilteredTotal = $this->db->table($this->builder);
-          $getFilteredTotal->where(implode(' || ', $where));
-          $filteredTotal= $getFilteredTotal->countAllResults();
+
+
+          $this->db->where(implode(' || ', $where));
+          $this->db->from('musteriler');
+          $filteredTotal = $this->db->count_all_results();
 
       }
       else{
@@ -52,12 +58,12 @@ class Customers_model extends CI_Model{
 
       $response = [];
       $response['data'] = [];
-      $response['recordsTotal'] = 100;
-      $response['recordsFiltered'] = 100;
+      $response['recordsTotal'] = $total;
+      $response['recordsFiltered'] = $filteredTotal;
 
 
-      $results = $this->db->get("musteriler");
-      foreach ($results->result() as $user)
+
+      foreach ($query->result() as $user)
       {
           $response['data'][]= [
               'musteri_id' => $user->musteri_id,
