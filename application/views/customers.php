@@ -1,4 +1,4 @@
-<table id="example" class="display" style="width:100%">
+<table id="example" class="table table-bordered table-hover" style="width:100%">
     <thead>
     <tr>
         <th>#</th>
@@ -11,6 +11,7 @@
 
 <script>
     $(document).ready(function() {
+        var url = '<?= base_url('customers/getAll'); ?>';
         var table =  $('#example').DataTable( {
             language: {
 
@@ -70,7 +71,7 @@
             "processing": true,
             "serverSide": true,
             ajax:{
-                url:   '<?= base_url('customers/getAll'); ?>',
+                url:  url,
                 type: 'POST'
             },
             columns: [
@@ -78,7 +79,7 @@
                 { data: "musteri_adi" },
                 { data: "musteri_cep_tel" }
             ],
-            dom: 'lBfrtip',
+         //   dom: 'lBfrtip',
             buttons: [
                 'copy', 'excel', 'pdf'
             ]
