@@ -21,7 +21,7 @@
                     <div class="col-sm-10">
                         <div class="form-group">
                             <label for="customer-name">Müşteri Adı</label>
-                            <input type="text" class="form-control" id="customer-name" name="customer-name" placeholder="Müşteri Adı Girin ...">
+                            <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Müşteri Adı Girin ...">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -35,19 +35,19 @@
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="customer-gsm">Cep Telefonu</label>
-                            <input type="text" id="customer-gsm" name="customer-gsm" class="form-control" placeholder="Cep Telefonu Girin ...">
+                            <input type="text" id="customer_gsm" name="customer_gsm" class="form-control" placeholder="Cep Telefonu Girin ...">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="customer-phone">Sabit Telefon</label>
-                            <input type="text" class="form-control" id="customer-phone" name="customer-phone" placeholder="Sabit Telefon Girin...">
+                            <input type="text" class="form-control" id="customer_phone" name="customer_phone" placeholder="Sabit Telefon Girin...">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
                             <label for="customer-fax">Fax Numarası</label>
-                            <input type="text" class="form-control" id="customer-fax" name="customer-fax" placeholder="Fax Numarası Girin...">
+                            <input type="text" class="form-control" id="customer_fax" name="customer_fax" placeholder="Fax Numarası Girin...">
                         </div>
                     </div>
                 </div>
@@ -55,13 +55,13 @@
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="customer-email">E-Posta</label>
-                            <input type="text" class="form-control" id="customer-email" name="customer-email" placeholder="E-Posta Adresi Girin...">
+                            <input type="text" class="form-control" id="customer_email" name="customer_email" placeholder="E-Posta Adresi Girin...">
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
                             <label for="customer-identity">TC Kimlik No</label>
-                            <input type="text" class="form-control" id="customer-identity" name="customer-identity" placeholder="T.C. Kimlik No. Girin...">
+                            <input type="text" class="form-control" id="customer_identity" name="customer_identity" placeholder="T.C. Kimlik No. Girin...">
                         </div>
                     </div>
                 </div>
@@ -69,15 +69,15 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="customer-address">Adres</label>
-                            <input type="text" class="form-control" id="customer-address" name="customer-address" placeholder="Adres Girin ...">
+                            <input type="text" class="form-control" id="customer_address" name="customer_address" placeholder="Adres Girin ...">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="customer-city">İl</label>
-                            <select class="form-control" id="customer-city" name="customer-city">
+                            <label for="customer_city">İl</label>
+                            <select class="form-control" id="customer_city" name="customer_city">
                                 <option>option 1</option>
                                 <option>option 2</option>
                                 <option>option 3</option>
@@ -88,8 +88,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="customer-town">İlçe</label>
-                            <select class="form-control" id="customer-town" name="customer-town">
+                            <label for="customer_town">İlçe</label>
+                            <select class="form-control" id="customer_town" name="customer_town">
                                 <option>option 1</option>
                                 <option>option 2</option>
                                 <option>option 3</option>
@@ -104,7 +104,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="company-name">Firma Adı</label>
-                            <input type="text" class="form-control" id="company-name" name="company-name" placeholder="Firma Adı Girin ...">
+                            <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Firma Adı Girin ...">
                         </div>
                     </div>
                 </div>
@@ -112,13 +112,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="tax-office">Vergi Dairesi</label>
-                                <input type="text" class="form-control" id="tax-office" name="tax-office" placeholder="Vergi Dairesi Girin ...">
+                                <input type="text" class="form-control" id="tax_office" name="tax_office" placeholder="Vergi Dairesi Girin ...">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="tax-number">Vergi Numarası</label>
-                                <input type="text" class="form-control" id="tax-number" name="tax-number" placeholder="Vergi Numarası ...">
+                                <input type="text" class="form-control" id="tax_number" name="tax_number" placeholder="Vergi Numarası ...">
                             </div>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
 
             },
             order : [
-                [0 , 'desc']
+                [0 , 'asc']
             ],
             columnDefs: [
                 {visible:false,targets:0},
@@ -246,14 +246,26 @@
         $.ajax({
             url:"<?php echo base_url(); ?>/customers/fetch_single_data",
             method:"POST",
-            data:{musteri_id:musteri_id},
+            data:{customer_id:musteri_id},
             dataType:"json",
             success:function(data)
             {
                 $('#costumerModal').modal('show');
                 $('.modal-title').text("Müşteri Düzenle");
-                $('#customer-name').val(data.musteri_adi);
-                $('#customer_id').val(data.musteri_id);
+                $('#customer_name').val(data.customer_name);
+                $('#customer_gsm').val(data.customer_gsm);
+                $('#customer_phone').val(data.customer_phone);
+                $('#customer_fax').val(data.customer_fax);
+                $('#customer_email').val(data.customer_email);
+                $('#customer_identity').val(data.customer_identity);
+                $('#customer_address').val(data.customer_address);
+                $('#customer_city').val(data.customer_city);
+                $('#customer_town').val(data.customer_town);
+                $('#company_name').val(data.company_name);
+                $('#tax_office').val(data.tax_office);
+                $('#tax_number').val(data.tax_number);
+
+
                 $('#action').val('Düzenle');
                 $('#operation').val('Edit');
             }

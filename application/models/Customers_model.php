@@ -101,9 +101,19 @@ class Customers_model extends CI_Model{
         $query = $this->db->get('musteriler');
         foreach ($query->result() as $user){
             $output=[
-                'musteri_id' => $user->musteri_id,
-                'musteri_adi' => $user->musteri_adi,
-
+                'customer_id'       => $user->musteri_id,
+                'customer_name'     => $user->musteri_adi,
+                'customer_gsm'      => $user->musteri_cep_tel,
+                'customer_phone'    => $user->musteri_ev_tel,
+                'customer_fax'      => $user->musteri_fax_tel,
+                'customer_email'    => $user->musteri_email,
+                'customer_identity' => $user->musteri_tc_no,
+                'customer_address'  => $user->musteri_adres,
+                'customer_city'     => $user->musteri_adres_il,
+                'customer_town'     => $user->musteri_adres_ilce,
+                'company_name'      => $user->musteri_firma_adi,
+                'tax_office'        => $user->musteri_vergi_dairesi,
+                'tax_number'        => $user->musteri_vergi_no,
             ];
         }
         return $output;
@@ -112,9 +122,7 @@ class Customers_model extends CI_Model{
 
     function deleteCustomer($data)
     {
-
         $this->db->where('musteri_id', $data);
         $this->db->delete('musteriler');
     }
-
 }

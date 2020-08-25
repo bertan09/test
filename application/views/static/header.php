@@ -147,11 +147,11 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-10">
-                        <h1 class="m-0 text-dark"><?=$title;?></h1>
+                        <h1 class="m-0 text-dark"><?= $title ;?></h1>
                     </div><!-- /.col -->
                     <div class="col-sm-2">
                         <?php if (isset($button)): ?>
-                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#add-<?=$modal?>-modal"><?=$button?></button>
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#<?=$modal?>"><?=$button?></button>
                         <? endif; ?>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
