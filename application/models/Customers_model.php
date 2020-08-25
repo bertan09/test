@@ -32,7 +32,7 @@ class Customers_model extends CI_Model{
       }
 
 
-      $this->db->order_by('musteri_id', 'DESC');
+      $this->db->order_by($order[0], $order[1]);
       $this->db->limit($data['length'],$data['start']);
       $query = $this->db->get('musteriler');
 
@@ -74,13 +74,16 @@ class Customers_model extends CI_Model{
                       'title'=> 'Düzenle',
                       'url' => 'edit.php?id=' . $user->musteri_id,
                       'class' => 'btn btn-primary btn-sm update',
-                      'id' => $user->musteri_id
+                      'id' => $user->musteri_id,
+                      'mission' => 'editCustomer'
                   ],
                   [
                       'title'=> 'Sil',
                       'url' => 'delete.php?id=' . $user->musteri_id,
                       'class' => 'btn btn-danger btn-sm',
-                      'id' => $user->musteri_id
+                      'id' => $user->musteri_id,
+                      'mission' => 'deleteCustomer'
+
                   ]
 
               ]
@@ -91,6 +94,27 @@ class Customers_model extends CI_Model{
       return $response;
     }
 
+    function fetch_single_data($data)
+    {
+        $this->db->where('musteri_id', $data); // Produces: WHERE name = 'Joe'
 
+        $query = $this->db->get('musteriler');
+        foreach ($query->result() as $user){
+            $output=[
+                'musteri_id' => $user->musteri_id,
+                'musteri_adi' => $user->musteri_adi,
+
+            ];
+        }
+        return $output;
+
+    }
+
+    function deleteCustomer($data)
+    {
+
+        $this->db->where('musteri_id', $data);
+        $this->db->delete('musteriler');
+    }
 
 }

@@ -14,7 +14,9 @@ class Customers extends CI_Controller {
 	{
 	    $data = new stdClass();
 	   // $data->customers= $this->customers_model->get_all();
-        $data->title = "Müşteriler";
+        $data->title =  "Müşteriler";
+        $data->button = "Müşteri Ekle";
+        $data->modal =  "customer";
 
 
         $this->load->view('static/header', $data);
@@ -40,6 +42,21 @@ class Customers extends CI_Controller {
 
         }
     }
+    function fetch_single_data()
+    {
+        if($this->input->post('musteri_id'))
+        {
+            $output = $this->customers_model->fetch_single_data($this->input->post('musteri_id'));
+            echo json_encode($output);
+        }
+    }
+    function delete_data()
+    {
 
-
+        if($this->input->post('customer_id'))
+        {
+            $this->customers_model->deleteCustomer($this->input->post('customer_id'));
+            echo json_encode('Silindi');
+        }
+    }
 }

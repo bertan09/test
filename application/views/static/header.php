@@ -41,7 +41,6 @@
         </ul>
     </nav>
     <!-- /.navbar -->
-
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -50,7 +49,6 @@
                  style="opacity: .8">
             <span class="brand-text font-weight-light">Firma Adı</span>
         </a>
-
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
@@ -62,7 +60,6 @@
                     <a href="#" class="d-block">Kullanıcı Adı</a>
                 </div>
             </div>
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -149,14 +146,18 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                    <div class="col-sm-10">
                         <h1 class="m-0 text-dark"><?=$title;?></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-2">
+                        <?php if (isset($button)): ?>
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#add-<?=$modal?>-modal"><?=$button?></button>
+                        <? endif; ?>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
