@@ -17,6 +17,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <form action="" id="customerForm">
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="form-group">
@@ -128,6 +129,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
                 <button type="button" class="btn btn-primary">Kaydet</button>
             </div>
+            </form>
         </div>
         <!-- /.modal-content -->
     </div>
@@ -155,11 +157,18 @@
 </div>
 <!-- /.modal -->
 <script>
-    var table;
+ //   var table;
+
    $(document).ready(function() {
+       $("#addButtton").on("click", function(){
+           $('#customerForm').trigger("reset");
+           toastr.remove();
+       });
         var url = '<?= base_url('customers/getAll'); ?>';
-         table =  $('#customers').DataTable( {
-            language: {
+           table =  $('#customers').DataTable( {
+               "pageLength": 5,
+               "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Tümü"]],
+               language: {
 
                 "sDecimal":        ",",
                 "sEmptyTable":     "Tabloda herhangi bir veri mevcut değil",
