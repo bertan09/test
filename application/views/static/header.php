@@ -140,28 +140,3 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-10">
-                        <h1 class="m-0 text-dark"><?= $title ;?></h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-2">
-                        <?php if (isset($button)): ?>
-                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#<?=$modal?>" id="addButtton"><?=$button?></button>
-                        <? endif; ?>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-body">

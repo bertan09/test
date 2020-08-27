@@ -2,22 +2,23 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
+    public $viewfolder = "";
 
     public function __construct()
     {
         parent::__construct();
+        $this->viewfolder = "dashboard_v";
 
-        $this->load->model('dashboard_model');
     }
 	public function index()
 	{
+        $viewData = new stdClass();
+        $viewData->title = "Ana Sayfa";
+        $viewData->viewfolder = $this->viewfolder;
+        $viewData->subviewfolder = "list";
 
-	   $data =[
-	        'title' => 'Ana Sayfa'
-	        ];
-        $this->load->view('static/header', $data);
-		$this->load->view('dashboard', $data);
-        $this->load->view('static/footer', $data);
+		$this->load->view("{$viewData->viewfolder}/{$viewData->subviewfolder}/index", $viewData);
+
 
     }
 }

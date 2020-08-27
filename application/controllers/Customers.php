@@ -3,25 +3,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Customers extends CI_Controller {
 
+    public $viewfolder = "";
+
     public function __construct()
     {
         parent::__construct();
+        $this->viewfolder = "customer_v";
 
         $this->load->model('customers_model');
     }
 
     public function index()
 	{
-	    $data = new stdClass();
-	   // $data->customers= $this->customers_model->get_all();
-        $data->title =  "Müşteriler";
-        $data->button = "Müşteri Ekle";
-        $data->modal =  "costumerModal";
+        $viewData = new stdClass();
+        $viewData->title = "Müşteriler";
+        $viewData->viewfolder = $this->viewfolder;
+        $viewData->subviewfolder = "list";
 
-
-        $this->load->view('static/header', $data);
-		$this->load->view('customers', $data);
-        $this->load->view('static/footer', $data);
+        $this->load->view("{$viewData->viewfolder}/{$viewData->subviewfolder}/index" , $viewData);
 
     }
 
@@ -56,7 +55,41 @@ class Customers extends CI_Controller {
         if($this->input->post('customer_id'))
         {
             $this->customers_model->deleteCustomer($this->input->post('customer_id'));
-            echo json_encode('Silindi');
+
+
         }
+    }
+
+    function save(){
+
+        $data = new stdClass();
+        // $data->customers= $this->customers_model->get_all();
+        $data->title =  "Müşteriler";
+        $data->button = "Müşteri Ekle";
+        $data->modal =  "costumerModal";
+
+
+        $this->load->view('static/header', $data);
+        $this->load->view('customers', $data);
+        $this->load->view('static/footer', $data);
+
+
+
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('customer_name','Müşteri Adı','required|trim');
+        $this->form_validation->set_message(
+            array(
+                "required" => "{field} Adı Giriniz"
+            )
+        );
+
+        $validate= $this->form_validation->run();
+        if($validate){
+            echo "işlem Başarılı";
+        }
+        else{
+            echo validation_errors();
+        }
+
     }
 }

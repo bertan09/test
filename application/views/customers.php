@@ -17,7 +17,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" id="customerForm">
+                <form action="<?= base_url('customers/save') ?>" method="post" id="customerForm">
                 <div class="row">
                     <div class="col-sm-10">
                         <div class="form-group">
@@ -128,12 +128,13 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                <button type="button" class="btn btn-primary">Kaydet</button>
+                <button type="submit" class="btn btn-primary">Kaydet</button>
             </div>
-            </form>
+
         </div>
         <!-- /.modal-content -->
     </div>
+    </form>
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
