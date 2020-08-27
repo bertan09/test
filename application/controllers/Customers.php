@@ -62,16 +62,12 @@ class Customers extends CI_Controller {
 
     function save(){
 
-        $data = new stdClass();
-        // $data->customers= $this->customers_model->get_all();
-        $data->title =  "Müşteriler";
-        $data->button = "Müşteri Ekle";
-        $data->modal =  "costumerModal";
+        $viewData = new stdClass();
+        $viewData->title = "Müşteriler";
+        $viewData->viewfolder = $this->viewfolder;
+        $viewData->subviewfolder = "add";
 
-
-        $this->load->view('static/header', $data);
-        $this->load->view('customers', $data);
-        $this->load->view('static/footer', $data);
+        $this->load->view("{$viewData->viewfolder}/{$viewData->subviewfolder}/index" , $viewData);
 
 
 
