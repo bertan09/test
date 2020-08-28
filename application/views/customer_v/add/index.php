@@ -8,9 +8,6 @@
                 <div class="col-sm-10">
                     <h1 class="m-0 text-dark"><?php if(isset($title))echo $title; ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-2">
-                    <a href="customers/save"> <button type="button" class="btn btn-block btn-outline-primary">Müşteri Ekle</button></a>
-                </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

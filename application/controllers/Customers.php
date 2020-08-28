@@ -63,7 +63,7 @@ class Customers extends CI_Controller {
     function save(){
 
         $viewData = new stdClass();
-        $viewData->title = "Müşteriler";
+        $viewData->title = "Müşteri Ekle";
         $viewData->viewfolder = $this->viewfolder;
         $viewData->subviewfolder = "add";
 
