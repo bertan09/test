@@ -63,6 +63,7 @@ class Customers_model extends CI_Model{
               'customer_id' => $user->customer_id,
               'customer_name' => $user->customer_name,
               'customer_gsm' => $user->customer_gsm,
+              'edit' => '<a href="" class="btn btn-primary btn-sm">Düzenle </a>'. ' '.'<button class="btn btn-danger btn-sm remove-btn">Sil </button>',
               'actions' => [
                   [
                       'title'=> 'Düzenle',

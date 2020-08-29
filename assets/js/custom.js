@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-    $('.remove-btn').click( function(e) {
-        e.preventDefault();
+    $('.remove-btn').click( function() {
+
         alert("perform action");
     });
 

@@ -40,11 +40,6 @@
 
     $(document).ready(function() {
 
-        $("#addButtton").on("click", function(){
-            $('#customerForm').trigger("reset");
-            $("#company-detail").hide();
-            toastr.remove();
-        });
         var url = '<?= base_url('customers/getAll'); ?>';
         table =  $('#customers').DataTable( {
             "pageLength": 5,
@@ -91,16 +86,7 @@
                     targets:['nosort'],
                     orderable: false
                 },
-                {
-                    render: function(data, type, row){
-                        var html = '';
-                        $.each(row.actions, function(key, action){
-                            html += `<a href="${action.url}" class="${action.class}">${action.title}</a> `
-                        })
-                        return html;
-                    },
-                    targets:3
-                },
+
 
             ],
             "processing": true,
@@ -112,7 +98,8 @@
             columns: [
                 { data: "customer_id"},
                 { data: "customer_name" },
-                { data: "customer_gsm" }
+                { data: "customer_gsm" },
+                { data : 'edit'}
             ],
             //   dom: 'lBfrtip',
             buttons: [
@@ -120,8 +107,8 @@
             ]
         } );
 
-        $("#company-btn").on("click", function(){
-            $("#company-detail").toggle();
+        $("#remove-btn").on("click", function(){
+            alert("denmee");
         });
 
 
@@ -180,4 +167,4 @@
         });
     }
 </script>
-        <?php $this->load->view('static/footer')?>;
+        <?php $this->load->view('static/footer')?>
