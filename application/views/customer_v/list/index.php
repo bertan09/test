@@ -86,7 +86,16 @@
                     targets:['nosort'],
                     orderable: false
                 },
-
+                {
+                    render: function(data, type, row){
+                        var html = '';
+                        $.each(row.actions, function(key, action){
+                            html += `<${action.type} href="${action.url}"  onclick="${action.method}(${action.id})" class="${action.class}">${action.title}</${action.type}> `
+                        })
+                        return html;
+                    },
+                    targets:3
+                },
 
             ],
             "processing": true,
@@ -98,17 +107,16 @@
             columns: [
                 { data: "customer_id"},
                 { data: "customer_name" },
-                { data: "customer_gsm" },
-                { data : 'edit'}
-            ],
+                { data: "customer_gsm" }
+                ],
             //   dom: 'lBfrtip',
             buttons: [
                 'copy', 'excel', 'pdf'
             ]
         } );
 
-        $("#remove-btn").on("click", function(){
-            alert("denmee");
+        $("#company-btn").on("click", function(){
+            $("#company-detail").toggle();
         });
 
 
@@ -167,4 +175,4 @@
         });
     }
 </script>
-        <?php $this->load->view('static/footer')?>
+        <?php $this->load->view('static/footer')?>;
