@@ -11,7 +11,12 @@
 <script src="<?= base_url("assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"); ?>"></script>
 <!-- Toastr -->
 <script src="<?= base_url("assets/plugins/toastr/toastr.min.js"); ?>"></script>
+<script src="<?= base_url("assets/js/sweetalert2.all.min.js"); ?>"></script>
+
 <!-- AdminLTE App -->
 <script src="<?= base_url("assets/js/adminlte.min.js"); ?>"></script>
+<script src="<?= base_url("assets/js/custom.js"); ?>"></script>
+
 </body>
 </html>
+<?php $this->load->view('static/alert'); ?>

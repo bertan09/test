@@ -8,8 +8,6 @@
                 <div class="col-sm-10">
                     <h1 class="m-0 text-dark"><?php if(isset($title))echo $title; ?></h1>
                 </div><!-- /.col -->
-                <div class="col-sm-2">
-                </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
@@ -21,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <? $this->load->view("{$viewFolder}/{$subViewFolder}/content");?>
+                         <? $this->load->view("{$viewFolder}/{$subViewFolder}/content");?>
                         </div>
                     </div>
                 </div>
@@ -34,4 +32,4 @@
 </div>
 <!-- /.content-wrapper -->
 </div>
-        <?php $this->load->view('static/footer')?>
+<?php $this->load->view('static/footer')?>

@@ -9,7 +9,7 @@
                     <h1 class="m-0 text-dark"><?php if(isset($title))echo $title; ?></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-2">
-                    <a href="customers/save"> <button type="button" class="btn btn-block btn-outline-primary">Müşteri Ekle</button></a>
+                    <a href="customers/new_form"> <button type="button" class="btn btn-block btn-outline-primary">Müşteri Ekle</button></a>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                         <? $this->load->view("{$viewfolder}/{$subviewfolder}/content");?>
+                         <? $this->load->view("{$viewFolder}/{$subViewFolder}/content");?>
                         </div>
                     </div>
                 </div>
@@ -39,6 +39,7 @@
     //   var table;
 
     $(document).ready(function() {
+
         $("#addButtton").on("click", function(){
             $('#customerForm').trigger("reset");
             $("#company-detail").hide();
@@ -82,7 +83,7 @@
 
             },
             order : [
-                [0 , 'asc']
+                [0 , 'desc']
             ],
             columnDefs: [
                 {visible:false,targets:0},
@@ -94,8 +95,7 @@
                     render: function(data, type, row){
                         var html = '';
                         $.each(row.actions, function(key, action){
-                            html += `<button type="button" class="${action.class}" data-row-id="${action.url}" id="${action.id}" onclick="${action.mission}(${action.id})">${action.title}</button> `
-                            //  html += `<a href="${action.url}" class="${action.class}">${action.title}</a> `
+                            html += `<a href="${action.url}" class="${action.class}">${action.title}</a> `
                         })
                         return html;
                     },
@@ -110,9 +110,9 @@
                 type: 'POST'
             },
             columns: [
-                { data: "musteri_id"},
-                { data: "musteri_adi" },
-                { data: "musteri_cep_tel" }
+                { data: "customer_id"},
+                { data: "customer_name" },
+                { data: "customer_gsm" }
             ],
             //   dom: 'lBfrtip',
             buttons: [

@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                         <? $this->load->view("{$viewfolder}/{$subviewfolder}/content");?>
+                         <? $this->load->view("{$viewFolder}/{$subViewFolder}/content");?>
                         </div>
                     </div>
                 </div>
@@ -32,6 +32,10 @@
 </div>
 <!-- /.content-wrapper -->
 </div>
+
+<script>
+
+</script>
 <script>
     //   var table;
 
@@ -176,5 +180,6 @@
             });
         });
     }
+
 </script>
-        <?php $this->load->view('static/footer')?>;
+        <?php $this->load->view('static/footer')?>
