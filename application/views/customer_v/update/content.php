@@ -5,7 +5,7 @@
                 <label for="customer_name">Müşteri Adı</label>
                 <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Müşteri Adı Girin ..." value="<?= $item->customer_name?>">
                 <?php if(isset($form_error)){ ?>
-                    <small class="pull-right input-form-error"> <?php echo form_error("customer_name"); ?></small>
+                    <small class="text-danger"> <?php echo form_error("customer_name"); ?></small>
                 <?php } ?>
             </div>
         </div>
@@ -40,7 +40,10 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <label for="customer_email">E-Posta</label>
-                <input type="text" class="form-control" id="customer_email" name="customer_email" placeholder="E-Posta Adresi Girin..." value="<?= $item->customer_email?>">
+                <input type="email" class="form-control  <?php if(isset($form_error)){ ?>is-invalid<?php } ?>" id="customer_email" name="customer_email" placeholder="E-Posta Adresi Girin..." value="<?= $item->customer_email?>">
+                <?php if(isset($form_error)){ ?>
+                    <small class="text-danger"> <?php echo form_error("customer_email"); ?></small>
+                <?php } ?>
             </div>
         </div>
         <div class="col-sm-6">
@@ -101,8 +104,7 @@
             </div>
         </div>
     </div>
-
-    <div class="modal-footer justify-content-between">
-        <a href="<?= base_url('customers')?>"><button type="button" class="btn btn-danger" ah>Geri</button></a>
+    <div class="float-right">
+        <a href="<?= base_url('customers')?>"><button type="button" class="btn btn-danger">Geri</button></a>
         <button type="submit" class="btn btn-primary">Güncelle</button>
     </div>

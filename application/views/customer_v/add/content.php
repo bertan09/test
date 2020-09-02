@@ -3,9 +3,9 @@
         <div class="col-sm-10">
             <div class="form-group">
                 <label for="customer_name">Müşteri Adı</label>
-                <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Müşteri Adı Girin ...">
+                <input type="text" class="form-control <?php if (isset($form_error)) if(form_error('customer_name')) echo 'is-invalid';?>" id="customer_name" name="customer_name" placeholder="Müşteri Adı Girin ..." autocomplete="off" value="<?=$this->input->post('customer_name');?>">
                 <?php if(isset($form_error)){ ?>
-                    <small class="pull-right input-form-error"> <?php echo form_error("customer_name"); ?></small>
+                    <small class="text-danger"> <?php echo form_error("customer_name"); ?></small>
                 <?php } ?>
             </div>
         </div>
@@ -20,7 +20,10 @@
         <div class="col-sm-4">
             <div class="form-group">
                 <label for="customer_gsm">Cep Telefonu</label>
-                <input type="text" id="customer_gsm" name="customer_gsm" class="form-control" placeholder="Cep Telefonu Girin ...">
+                <input type="text" id="customer_gsm" name="customer_gsm" class="form-control <?php if (isset($form_error)) if(form_error('customer_gsm')) echo 'is-invalid';?>" placeholder="Cep Telefonu Girin ..." value="<?=$this->input->post('customer_gsm');?>" >
+                <?php if(isset($form_error)){ ?>
+                    <small class="text-danger"> <?php echo form_error("customer_gsm"); ?></small>
+                <?php } ?>
             </div>
         </div>
         <div class="col-sm-4">
@@ -110,7 +113,15 @@
         </div>
     </div>
 
-    <div class="modal-footer justify-content-between">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+    <div class="float-right">
+        <a href="<?= base_url('customers') ?>"><button type="button" class="btn btn-danger">Geri</button></a>
         <button type="submit" class="btn btn-primary">Kaydet</button>
     </div>
+    <script>
+        $(document).ready(function () {
+            $('#customer_gsm').usPhoneFormat({
+                format: '(xxx) xxx-xxxx',
+            });
+
+        });
+    </script>

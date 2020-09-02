@@ -32,4 +32,11 @@
 </div>
 <!-- /.content-wrapper -->
 </div>
+<script>
+
+    $("#company-btn").on("click", function(){
+        $("#company-detail").toggle();
+    });
+
+</script>
 <?php $this->load->view('static/footer')?>

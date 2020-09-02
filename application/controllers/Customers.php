@@ -61,23 +61,35 @@ class Customers extends CI_Controller {
 
         // Kurallar yazilir..
         $this->form_validation->set_rules("customer_name", "Müşteri Adı", "required|trim");
+      //  $this->form_validation->set_rules("customer_gsm", "Telefon Numarası", "required|trim|regex_match[/^[0-9]{10}$/]'");
 
         $this->form_validation->set_message(
             array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
+                "required"  => "* {field} girin.",
+            //    "regex_match"  => "* Geçerli bir {field} girin",
+
             )
         );
 
-        // Form Validation Calistirilir..
-        // TRUE - FALSE
         $validate = $this->form_validation->run();
 
         if($validate){
 
           $insert =  $this->customers_model->add(
-                array(
-                        "customer_name" => $this->input->post("customer_name")
-                )
+              array(
+                  "customer_name" => $this->input->post("customer_name"),
+                  "customer_gsm" => $this->input->post("customer_gsm"),
+                  "customer_phone" => $this->input->post("customer_phone"),
+                  "customer_fax" => $this->input->post("customer_fax"),
+                  "customer_email" => $this->input->post("customer_email"),
+                  "customer_identity" => $this->input->post("customer_identity"),
+                  "customer_address" => $this->input->post("customer_address"),
+                  "customer_city" => $this->input->post("customer_city"),
+                  "customer_town" => $this->input->post("customer_town"),
+                  "company_name" => $this->input->post("company_name"),
+                  "tax_office" => $this->input->post("tax_office"),
+                  "tax_number" => $this->input->post("tax_number")
+              )
             );
           if ($insert){
               $alert = array (
@@ -132,10 +144,14 @@ class Customers extends CI_Controller {
 
         // Kurallar yazilir..
         $this->form_validation->set_rules("customer_name", "Müşteri Adı", "required|trim");
+        $this->form_validation->set_rules('customer_email', 'E-Posta', 'trim|valid_email');
+
 
         $this->form_validation->set_message(
             array(
-                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
+                "required"  => "* {field} girin.",
+                "valid_email"  => "Geçerli bir {field} adresi girin",
+
             )
         );
 
@@ -150,7 +166,18 @@ class Customers extends CI_Controller {
                     'customer_id' => $id
                 ),
                 array(
-                    "customer_name" => $this->input->post("customer_name")
+                    "customer_name" => $this->input->post("customer_name"),
+                    "customer_gsm" => $this->input->post("customer_gsm"),
+                    "customer_phone" => $this->input->post("customer_phone"),
+                    "customer_fax" => $this->input->post("customer_fax"),
+                    "customer_email" => $this->input->post("customer_email"),
+                    "customer_identity" => $this->input->post("customer_identity"),
+                    "customer_address" => $this->input->post("customer_address"),
+                    "customer_city" => $this->input->post("customer_city"),
+                    "customer_town" => $this->input->post("customer_town"),
+                    "company_name" => $this->input->post("company_name"),
+                    "tax_office" => $this->input->post("tax_office"),
+                    "tax_number" => $this->input->post("tax_number")
                 )
             );
             if ($update){
