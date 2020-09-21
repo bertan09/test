@@ -32,11 +32,28 @@
 </div>
 <!-- /.content-wrapper -->
 </div>
+
 <script>
-
-    $("#company-btn").on("click", function(){
-        $("#company-detail").toggle();
+    $(document).ready(function(){
+        $('#customer_city').change(function(){
+            var city_id = $('#customer_city').val();
+            if(city_id != '')
+            {
+                $.ajax({
+                    url:"<?= base_url('customers/getTown'); ?>",
+                    method:"POST",
+                    data:{city_id:city_id},
+                    success:function(data)
+                    {
+                        $('#customer_town').html(data);
+                    }
+                });
+            }
+            else
+            {
+                $('#customer_town').html('<option value="">İlçe Seçin</option>');
+            }
+        });
     });
-
 </script>
 <?php $this->load->view('static/footer')?>

@@ -1,18 +1,12 @@
 <form action="<?= base_url("customers/update/$item->customer_id") ?>" method="post" id="customerForm">
     <div class="row">
-        <div class="col-sm-10">
+        <div class="col-sm-6">
             <div class="form-group">
                 <label for="customer_name">Müşteri Adı</label>
                 <input type="text" class="form-control" id="customer_name" name="customer_name" placeholder="Müşteri Adı Girin ..." value="<?= $item->customer_name?>">
                 <?php if(isset($form_error)){ ?>
                     <small class="text-danger"> <?php echo form_error("customer_name"); ?></small>
                 <?php } ?>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="form-group mt-2">
-                <label></label>
-                <button type="button" class="btn btn-block btn-secondary" id="company-btn">Firma Bilgisi</button>
             </div>
         </div>
     </div>
@@ -64,15 +58,37 @@
             <div class="form-group">
                 <label for="customer_city">İl</label>
                 <select class="form-control" id="customer_city" name="customer_city">
-                    <option value="<?= $item->customer_city?>"><?= $item->customer_city?></option>
+                    <? if ($item->customer_city != "") : ?>
+                    <option value="<?= $item->city_id?>"><?= $item->city_name?></option>
+                    <? else :?>
+                        <option value="">Şehir Seçiniz</option>
+                    <? endif; ?>
+                    <?php
+                    foreach($city as $row)
+                    {
+                        echo '<option value="'.$row->city_id.'">'.$row->city_name.'</option>';
+                    }
+                    ?>
                 </select>
+
+
             </div>
         </div>
         <div class="col-sm-3">
             <div class="form-group">
                 <label for="customer_town">İlçe</label>
                 <select class="form-control" id="customer_town" name="customer_town">
-                    <option value="<?= $item->customer_town?>"><?= $item->customer_town?></option>
+                    <? if ($item->customer_town != "") : ?>
+                        <option value="<?= $item->town_id?>"><?= $item->town_name?></option>
+                    <? else :?>
+                        <option value="">İlçe Seçiniz</option>
+                    <? endif; ?>
+                    <?php
+                    foreach($town as $row)
+                    {
+                        echo '<option value="'.$row->town_id.'">'.$row->town_name.'</option>';
+                    }
+                    ?>
                 </select>
             </div>
         </div>
@@ -80,30 +96,26 @@
     <div class="row">
 
     </div>
-    <div style="display: none" id="company-detail">
         <div class="row" >
-            <div class="col-sm-12">
+            <div class="col-sm-6">
                 <div class="form-group">
                     <label for="company_name">Firma Adı</label>
                     <input type="text" class="form-control" id="company_name" name="company_name" placeholder="Firma Adı Girin ..." value="<?= $item->company_name?>">
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="tax_office">Vergi Dairesi</label>
                     <input type="text" class="form-control" id="tax_office" name="tax_office" placeholder="Vergi Dairesi Girin ..." value="<?= $item->tax_office?>">
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <div class="form-group">
                     <label for="tax_number">Vergi Numarası</label>
                     <input type="text" class="form-control" id="tax_number" name="tax_number" placeholder="Vergi Numarası ..." value="<?= $item->tax_number?>">
                 </div>
             </div>
         </div>
-    </div>
     <div class="float-right">
         <a href="<?= base_url('customers')?>"><button type="button" class="btn btn-danger">Geri</button></a>
         <button type="submit" class="btn btn-primary">Güncelle</button>

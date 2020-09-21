@@ -128,11 +128,17 @@ class Customers extends CI_Controller {
                 'customer_id' => $id
             )
         );
+        $city = $this->customers_model->getCity();
+        $town = $this->customers_model->getTownFetch($item->city_id);
+
         $viewData = new stdClass();
 
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = "update";
         $viewData->item=$item;
+        $viewData->city=$city;
+        $viewData->town=$town;
+
 
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
 
@@ -237,6 +243,14 @@ class Customers extends CI_Controller {
         $this->session->set_flashdata("alert", $alert);
 
         redirect(base_url("customers"));
+    }
+
+    function getTown()
+    {
+        if($this->input->post('city_id'))
+        {
+            echo $this->customers_model->getTown($this->input->post('city_id'));
+        }
     }
 
 }

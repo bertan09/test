@@ -8,7 +8,13 @@ class Customers_model extends CI_Model{
     }
 
   public function get($where = array()){
-     return   $this->db->where($where)->get($this->tableName)->row();
+     return   $this->db->where($where)
+         ->join('cities', 'customers.customer_city = cities.city_id', 'LEFT')
+         ->join('towns', 'customers.customer_town = towns.town_id', 'LEFT')
+         ->get($this->tableName)->row();
+
+
+
   }
 
 
@@ -101,5 +107,31 @@ class Customers_model extends CI_Model{
     }
     public function delete($where = array()){
         return $this->db->where($where)->delete($this->tableName);
+    }
+
+    public function getCity (){
+        $this->db->order_by("city_name", "ASC");
+        $query = $this->db->get("cities");
+        return $query->result();
+    }
+
+    public function getTown($city_id)
+    {
+        $this->db->where('city_id', $city_id);
+        $this->db->order_by('town_name', 'ASC');
+        $query = $this->db->get('towns');
+        $output = '<option value="">İlçe Seçin</option>';
+        foreach($query->result() as $row)
+        {
+            $output .= '<option value="'.$row->town_id.'">'.$row->town_name.'</option>';
+        }
+        return $output;
+    }
+
+    public function getTownFetch ($city_id){
+        $this->db->where('city_id', $city_id);
+        $this->db->order_by("town_name", "ASC");
+        $query = $this->db->get("towns");
+        return $query->result();
     }
 }
